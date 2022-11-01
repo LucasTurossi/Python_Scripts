@@ -60,4 +60,4 @@ try:
         textrecords += str(rdata) + "\n"
 except:
     textrecords = "n/a"
-print(textrecords)
+print("Entradas SPF e TXT do domínio: \n",textrecords)
