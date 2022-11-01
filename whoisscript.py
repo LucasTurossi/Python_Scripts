@@ -25,17 +25,17 @@ if __name__ == '__main__':
 if is_registered(domain_name):
 
     whois_info = whois.whois(domain_name)
-    #print the name of registrar
-    print("DOMAIN REGISTRAR: ",whois_info.registrar)
-    # print the WHOIS server
-    print("WHOIS SERVER: ", whois_info.whois_server)
     # Print the creation date
-    print("Domain Creation Date: ",whois_info.creation_date)
+    print("Data de criação do domínio: ",whois_info.creation_date)
     #print the expiration date
-    print("Expiration Date: ", whois_info.expiration_date)
-    print("MX ", whois_info.mx)
-    #print all information related to whois
-    print(whois_info)
+    print("O domínio expira no dia: ", whois_info.expiration_date)
+
+dnsrecords=""
+getresolver = dns.resolver.Resolver() 
+getns = getresolver.resolve(domain_name, "NS") 
+for rdata in getns:
+    dnsrecords += str(rdata) + "\n"
+print("DNS utlizado pelo domínio", "\n",dnsrecords)
 
 #Get entrada em A
 
@@ -50,7 +50,6 @@ for x in dns.resolver.resolve(domain_name, 'MX'):
 print(mailservers)
 
 #Get SPF and TXT entrys
-
 textrecords = ""
 getresolver = dns.resolver.Resolver()
     
@@ -61,4 +60,3 @@ try:
 except:
     textrecords = "n/a"
 print(textrecords)
-
