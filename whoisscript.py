@@ -5,6 +5,8 @@ import socket
 import dns.resolver
 import ssl
 import flask 
+from io import StringIO
+import sys
 
 
 # defining a function that returns a boolean indicating whwther a 'domain_name' is registered or not.
@@ -35,16 +37,33 @@ if is_registered(domain_name):
     #print all information related to whois
     print(whois_info)
 
-    # Finding A record
-result = dns.resolver.query(domain_name, 'A')
-  
-# Printing record
-for val in result:
-    print('A Record : ', val.to_text())
+#Get entrada em A
 
-# Finding MX record
-result = dns.resolver.query(domain_name, 'MX')
-  
-# Printing record
-for val in result:
-    print('MX Record : ', val.to_text())
+domainip = socket.gethostbyname(domain_name)
+print (domainip)
+
+#Get MX record
+
+mailservers = "" 
+for x in dns.resolver.resolve(domain_name, 'MX'): 
+    mailservers += x.to_text() + "\n"
+print(mailservers)
+
+#Get SPF and TXT entrys
+
+textrecords = ""
+getresolver = dns.resolver.Resolver()
+    
+try:
+    gettext = getresolver.resolve(domain_name, "TXT") 
+    for rdata in gettext: 
+        textrecords += str(rdata) + "\n"
+except:
+    textrecords = "n/a"
+print(textrecords)
+
+domainip = socket.gethostbyname(domain_name)
+print (domainip)
+
+
+#Get print output and convert to a variable
