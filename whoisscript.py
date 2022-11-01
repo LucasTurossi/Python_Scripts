@@ -1,8 +1,12 @@
 import whois
+import json
+import re
 import socket
 import dns.resolver
+import ssl
 import flask 
-
+from io import StringIO
+import sys
 
 
 # defining a function that returns a boolean indicating whwther a 'domain_name' is registered or not.
@@ -23,8 +27,10 @@ if is_registered(domain_name):
     whois_info = whois.whois(domain_name)
     # Print the creation date
     print("Data de criação do domínio: ",whois_info.creation_date)
-    #print the expiration date
+    #Print the expiration date
     print("O domínio expira no dia: ", whois_info.expiration_date)
+    #Status do domínio (congelado ou publicado)
+    print("Status: ", whois_info.status)
 
 #Entrada de DNS
 dnsrecords=""
@@ -44,7 +50,7 @@ print ("Apontamento em A domínio: \n", domainip)
 mailservers = "" 
 for x in dns.resolver.resolve(domain_name, 'MX'): 
     mailservers += x.to_text() + "\n"
-print("Entradas MX: \n",mailservers)
+print("Entradas MX: \n", mailservers)
 
 #Get SPF and TXT entrys
 textrecords = ""
