@@ -21,7 +21,7 @@ def is_registered(domain_name):
 
 if __name__ == '__main__':
 
- domain_name = input("Please enter any domain name: ")
+ domain_name = input("Insira o domínio completo: ")
 if is_registered(domain_name):
 
     whois_info = whois.whois(domain_name)
@@ -30,6 +30,7 @@ if is_registered(domain_name):
     #print the expiration date
     print("O domínio expira no dia: ", whois_info.expiration_date)
 
+#Entrada de DNS
 dnsrecords=""
 getresolver = dns.resolver.Resolver() 
 getns = getresolver.resolve(domain_name, "NS") 
