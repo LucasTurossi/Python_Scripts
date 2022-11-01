@@ -41,14 +41,14 @@ print("DNS utlizado pelo domínio: \n", dnsrecords)
 #Get entrada em A
 
 domainip = socket.gethostbyname(domain_name)
-print (domainip)
+print ("Apontamento em A domínio: \n", domainip)
 
 #Get MX record
 
 mailservers = "" 
 for x in dns.resolver.resolve(domain_name, 'MX'): 
     mailservers += x.to_text() + "\n"
-print(mailservers)
+print("Entradas MX: \n",mailservers)
 
 #Get SPF and TXT entrys
 textrecords = ""
