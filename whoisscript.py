@@ -1,12 +1,8 @@
 import whois
-import json
-import re
 import socket
 import dns.resolver
-import ssl
 import flask 
-from io import StringIO
-import sys
+
 
 
 # defining a function that returns a boolean indicating whwther a 'domain_name' is registered or not.
