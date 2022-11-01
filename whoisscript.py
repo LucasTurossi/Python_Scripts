@@ -25,10 +25,10 @@ if is_registered(domain_name):
     print("Data de criação do domínio: ", whois_info.creation_date)
     #print the expiration date
     print("O domínio expira no dia: ", whois_info.expiration_date)
-    #
+    #Print status do domínio
     print("Status do domínio: ", whois_info.status)
 
-#Get entrada de DNS
+#Get ntrada de DNS
 dnsrecords=""
 getresolver = dns.resolver.Resolver() 
 getns = getresolver.resolve(domain_name, "NS") 
