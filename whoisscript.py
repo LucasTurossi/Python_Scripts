@@ -62,8 +62,3 @@ except:
     textrecords = "n/a"
 print(textrecords)
 
-domainip = socket.gethostbyname(domain_name)
-print (domainip)
-
-
-#Get print output and convert to a variable
