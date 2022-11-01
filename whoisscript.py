@@ -35,7 +35,7 @@ getresolver = dns.resolver.Resolver()
 getns = getresolver.resolve(domain_name, "NS") 
 for rdata in getns:
     dnsrecords += str(rdata) + "\n"
-print("DNS utlizado pelo domínio", "\n",dnsrecords)
+print("DNS utlizado pelo domínio: \n", dnsrecords)
 
 #Get entrada em A
 
