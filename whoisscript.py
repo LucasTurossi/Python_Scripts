@@ -28,7 +28,7 @@ if is_registered(domain_name):
     #Print status do domínio
     print("Status do domínio: ", whois_info.status)
 
-#Get ntrada de DNS
+#Get entrada de DNS
 dnsrecords=""
 getresolver = dns.resolver.Resolver() 
 getns = getresolver.resolve(domain_name, "NS") 
@@ -43,7 +43,6 @@ print ("Apontamento em A domínio: \n", domainip)
 
 
 #Get MX record
-
 mailservers = "" 
 for x in dns.resolver.resolve(domain_name, 'MX'): 
     mailservers += x.to_text() + "\n"
