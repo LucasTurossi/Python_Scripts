@@ -37,7 +37,7 @@ if is_registered(domain_name):
     #Print status do domínio
     print("Status do domínio: ", whois_info.status)
 
-#Get entrada de DNS
+#Get DNS entrys
 dnsrecords=""
 getresolver = dns.resolver.Resolver() 
 getns = getresolver.resolve(domain_name, "NS") 
@@ -45,7 +45,7 @@ for rdata in getns:
     dnsrecords += str(rdata) + "\n"
 print("DNS utlizado pelo domínio:\n", dnsrecords)
 
-#Get entrada em A
+#Get A entry
 domainip = socket.gethostbyname(domain_name)
 print ("Apontamento em A domínio: \n", domainip)
 
